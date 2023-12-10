@@ -1,8 +1,10 @@
 package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.ArticleForm;
+
 import com.example.firstproject.entitiy.Article;
 import com.example.firstproject.repository.ArticleRepository;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,7 @@ public class ArticleController {
 //        System.out.println(form.toString());
         log.info(form.toString());
         // 1. DTO를 엔티티로 변환
-        Article article = form.toEntitiy();
+        Article article = form.toEntity();
 //        System.out.println(article.toString());
         log.info(article.toString());
         // 2. 리파지터리로 엔티티를 DB에 저장
@@ -70,7 +72,7 @@ public class ArticleController {
     @PostMapping("/articles/update")
     public String update(ArticleForm form) {
         //1. DTO를 엔티티로 변환하기
-        Article articleEntity = form.toEntitiy();
+        Article articleEntity = form.toEntity();
         log.info(articleEntity.toString());
         //2. 엔티티를 DB에 저장하기
         Article target = articleRepository.findById(articleEntity.getId()).orElse(null);
